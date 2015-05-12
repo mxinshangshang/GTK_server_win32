@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cdtprojectproperties>
+<section name="org.eclipse.cdt.internal.ui.wizards.settingswizards.IncludePaths">
+<language name="Assembly Source File">
+
+</language>
+<language name="C Source File">
+<includepath>D:/gtk+/include/gtk-3.0</includepath>
+<includepath>D:/gtk+/include/cairo</includepath>
+<includepath>D:/gtk+/include/pango-1.0</includepath>
+<includepath>D:/gtk+/include/atk-1.0</includepath>
+<includepath>D:/gtk+/include/pixman-1</includepath>
+<includepath>D:/gtk+/include/freetype2</includepath>
+<includepath>D:/gtk+/include/libpng15</includepath>
+<includepath>D:/gtk+/include/gdk-pixbuf-2.0</includepath>
+<includepath>D:/gtk+/include/glib-2.0</includepath>
+<includepath>D:/gtk+/lib/glib-2.0/include</includepath>
+<includepath>D:/pthreads-w32-2-9-1-release/Pre-built.2/include</includepath>
+<includepath>D:\pthreads-w32-2-9-1-release\Pre-built.2\include</includepath>
+
+</language>
+<language name="Object File">
+
+</language>
+</section>
+<section name="org.eclipse.cdt.internal.ui.wizards.settingswizards.Macros">
+<language name="Assembly Source File">
+
+</language>
+<language name="C Source File">
+
+</language>
+<language name="Object File">
+
+</language>
+</section>
+</cdtprojectproperties>
