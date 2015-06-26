@@ -90,7 +90,6 @@ gint build_socket(void *arg)
                         &err);
     g_assert(err == NULL);
 
-	//(bind(sock,(struct sockaddr *)&saddr,sizeof(struct sockaddr_in))==-1)
 	if(g_socket_bind (sock,
 			   	   	  connect_address,
 					  TRUE,
@@ -162,9 +161,21 @@ void send_text()
 	}
 	/* get text */
 	gtk_text_buffer_get_bounds(GTK_TEXT_BUFFER(input_buffer),&start,&end);
-	text=gtk_text_buffer_get_text(GTK_TEXT_BUFFER(input_buffer),&start,&end,FALSE);
+
+
+	gint i;
+	for(i=0;i<=500;i++)
+	{
+		itoa(i, text, 10);
+		send_func(text);
+		Sleep(10);
+		if(500==i) i=0;
+	}
+
+
+	//text=gtk_text_buffer_get_text(GTK_TEXT_BUFFER(input_buffer),&start,&end,FALSE);
 	/* If there is no input,do nothing but return */
-	if(strcmp(text,"")!=0)
+	/*if(strcmp(text,"")!=0)
 	{
 		send_func(text);
 		clean_send_text();
@@ -172,18 +183,11 @@ void send_text()
 	}
 	else
 		show_err("The message can not be empty ...\n");
-	free(text);
+	free(text);*/
 }
 void startup(void)
 {
-        //res=pthread_create(&listen_thread,NULL,build_socket,NULL);
     g_thread_new("build_socket",build_socket, NULL);
-    //res=build_socket(sock);
-	//if(res!=0)
-	//{
-    //        show_err("socket build error");
-    //        exit(EXIT_FAILURE);
-	//}
 	show_err("The server has been started !\n");
     return;
 }
