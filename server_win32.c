@@ -7,6 +7,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 #define _WIN32_ 1
 
@@ -121,7 +122,7 @@ void send_func(const char *text)
 	GError *err = NULL;
 	n=g_socket_send(cl_sock,
 	               text,
-			       MAXSIZE,
+			       32,
 	               NULL,
 	               &err);
 	if(n<0)
@@ -150,10 +151,13 @@ void clean_send_text()
 /* get the input text,and send it */
 void send_text()
 {
+	gint data[8];
+	gint a,b,c,d,e,f,g,h;
+	//short int h;
 	GtkTextIter start,end;
 	gchar *text;
 	 /* Socket creating has succeed ,so send message */
-	text=(gchar *)malloc(MAXSIZE);
+	text=(gchar *)g_malloc(MAXSIZE);
 	if(text==NULL)
 	{
 		printf("Malloc error!\n");
@@ -163,6 +167,7 @@ void send_text()
 	gtk_text_buffer_get_bounds(GTK_TEXT_BUFFER(input_buffer),&start,&end);
 
 
+	/*
 	gint i;
 	for(i=0;i<=500;i++)
 	{
@@ -171,8 +176,46 @@ void send_text()
 		Sleep(10);
 		if(500==i) i=0;
 	}
+	*/
 
+	a=0;
+	b=150;
+	c=50;
+	d=60;
+	e=80;
+	f=100;
+	g=120;
+	h=20;
 
+	data[0]=a;
+	data[1]=b;
+	data[2]=c;
+	data[3]=d;
+	data[4]=e;
+	data[5]=f;
+	data[6]=g;
+	data[7]=h;
+	//strcpy(text,data);
+	//sprintf(text,"%d",g);
+
+	gint i;
+	for(i=0;i<=500;i++)
+	{
+		data[0]=a+i;
+		data[1]=b+100*pow(-1,i/50);
+		data[2]=c+50*sin((double)i/80);
+		data[3]=d+i;
+		data[4]=e+i;
+		data[5]=f+i;
+		data[6]=g+i;
+		data[7]=h+i;
+		strcpy(text,data);
+		send_func(data);
+		Sleep(10);
+		if(500==i) i=0;
+	}
+
+    g_free(text);
 	//text=gtk_text_buffer_get_text(GTK_TEXT_BUFFER(input_buffer),&start,&end,FALSE);
 	/* If there is no input,do nothing but return */
 	/*if(strcmp(text,"")!=0)
