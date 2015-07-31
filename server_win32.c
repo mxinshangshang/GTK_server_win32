@@ -211,7 +211,7 @@ void send_text()
 		data[7]=h+i;
 		strcpy(text,data);
 		send_func(data);
-		Sleep(10);
+		Sleep(1);
 		if(500==i) i=0;
 	}
 
