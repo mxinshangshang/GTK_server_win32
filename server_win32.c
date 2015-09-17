@@ -82,7 +82,7 @@ gpointer recv_func(gpointer arg)/*recv_func(void *arg)*/
 gint build_socket(void *arg)
 {
     g_type_init();
-    GInetAddress *iface_address = g_inet_address_new_from_string ("127.0.0.1");
+    GInetAddress *iface_address = g_inet_address_new_from_string("127.0.0.1"); //("111.186.100.210");
     GSocketAddress *connect_address = g_inet_socket_address_new (iface_address, 8500);
     GError *err = NULL;
     sock = g_socket_new(G_SOCKET_FAMILY_IPV4,
